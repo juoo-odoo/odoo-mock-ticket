@@ -1,0 +1,13 @@
+<odoo>
+    <record id="sale_order_inherited_form_sale" model="ir.ui.view">
+        <!-- NOTE: Ask about the fields here -->
+        <field name="name">sale.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="price_unit" position="after">
+                <field name="last_price"/>
+            </field>
+        </field>
+    </record>
+</odoo>
