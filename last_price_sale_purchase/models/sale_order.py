@@ -5,7 +5,7 @@ class SaleOrder(models.Model):
 
     # on sale order confirmation {state == 'sale'}.
     # for each product sold, set the product's {last_sale_price} to the {price_unit} of the sale orde
-    @api.model
+    # @api.model
     def write(self, vals):
         if vals.get('state') == 'sale':
             for order in self.order_line:
@@ -14,13 +14,11 @@ class SaleOrder(models.Model):
 
 
     # Note -- Does not work. Why
-    # @api.depends('state') 
-    # def _on_successful_sale_order(self):
-    #     print('sale order hello')
-    #     for record in self:
-    #         if record.state == 'sale':
-    #             for order in self.order_line:
-    #                 order.product_id.last_sale_price = order.price_unit
-    # @api.onchange('partner_id')
-    # def _test(self):
-    #     print('Hello world')
+    @api.onchange('state') 
+    def _on_successful_sale_order(self):
+        print('sale order hello')
+        import ipdb; ipdb.set_trace()
+        for record in self:
+            if record.state == 'sale':
+                for order in self.order_line:
+                    order.product_id.last_sale_price = order.price_unit

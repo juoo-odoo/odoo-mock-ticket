@@ -5,3 +5,5 @@ class ProductProduct(models.Model):
     
     last_cost_price = fields.Float(readonly=True)
     last_sale_price = fields.Float(readonly=True)
+
+# product.template is parent of product.product

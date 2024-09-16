@@ -5,9 +5,7 @@ class PurchaseOrder(models.Model):
 
     # on RFQ sent confirmation {state == 'sent'}.
     # for each product line, set the product's {last_cost_price} to the {price_unit} of the purchase order
-    @api.model
     def write(self, vals):
-        print(self, vals)
         if vals.get('state') == 'sent':
             for order in self.order_line:
                 order.product_id.last_cost_price = order.price_unit
