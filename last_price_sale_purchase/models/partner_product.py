@@ -5,6 +5,9 @@ class PartnerProduct(models.Model):
     _name = 'lpsp.partner_product'
 
     partner_id = fields.Many2one("res.partner")
+    partner_name = fields.Char(related="partner_id.name", default="")
+
+    
     product_id = fields.Many2one("product.product")
 
     last_cost_price = fields.Float(readonly=True)

@@ -5,16 +5,13 @@
         <field name="inherit_id" ref="product.product_variant_easy_edit_view"/>
         <field name="arch" type="xml">
             <field name="currency_id" position="before">
-                <div class="o_row">
-                    <label for="last_sale_price"/>
-                    <field name="last_sale_price" string="Last Sale Price" class="o_row" widget="monetary"/>
-                </div>
-            </field>
-            <field name="currency_id" position="before">
-                <div class="o_row">
-                    <label for="last_cost_price"/>
-                    <field name="last_cost_price" string="Last Cost Price" class="o_row" widget="monetary"/>
-                </div>
+                <field name="partner_prices_ids" readonly="True">
+                    <tree create="False">
+                        <field name="partner_name"/>
+                        <field name="last_cost_price"/>
+                        <field name="last_sale_price"/>
+                    </tree>
+                </field>
             </field>
         </field>
     </record>
